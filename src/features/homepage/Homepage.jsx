@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Homepage.css";
 const Homepage = () => {
-  const users = useSelector((state) => state.forms.users);
-  // console.log(users);
+  const userss = useSelector((state) => state.forms.users);
+  console.table([userss]);
 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const Homepage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({ fname: "", lname: "" });
+    // setFormData({ fname: "", lname: "" });
     dispatch({ type: "ADD_USER", payload: formData });
   };
 
@@ -30,7 +30,7 @@ const Homepage = () => {
               id="exampleInputfname1"
               aria-describedby="fnameHelp"
               placeholder="First Name"
-              onChange={(e) =>
+              onInput={(e) =>
                 setFormData({ ...formData, fname: e.target.value })
               }
             />
@@ -42,7 +42,7 @@ const Homepage = () => {
               className="form-control"
               id="exampleInputPassword1"
               placeholder="Last Name"
-              onChange={(e) =>
+              onInput={(e) =>
                 setFormData({ ...formData, lname: e.target.value })
               }
             />
@@ -73,15 +73,14 @@ const Homepage = () => {
             </tr>
           </thead>
           <tbody>
-            {users &&
-              users.map((item, key) => {
-                return (
-                  <tr id={key}>
-                    <td>{item.fname}</td>
-                    <td>{item.lname}</td>
-                  </tr>
-                );
-              })}
+            {userss.map((item, key) => {
+              return (
+                <tr id={key}>
+                  <td>{item.fname}</td>
+                  <td>{item.lname}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -90,3 +89,23 @@ const Homepage = () => {
 };
 
 export default Homepage;
+//throttling is done here
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   setTimeout(() => {
+//     setFormData({ fname: "", lname: "" });
+//     dispatch({ type: "ADD_USER", payload: formData });
+//   }, 2000);
+// };
+
+//debouncing is done here
+// let timeoutId;
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   setFormData({ fname: "", lname: "" });
+
+//   clearTimeout(timeoutId);
+//   timeoutId = setTimeout(() => {
+//     dispatch({ type: "ADD_USER", payload: formData });
+//   }, 2000);
+// };
