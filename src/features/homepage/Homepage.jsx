@@ -5,17 +5,17 @@ const Homepage = () => {
   const userss = useSelector((state) => state.forms.users);
   console.table([userss]);
 
-  // const dispatch = useDispatch();
-  // const [formData, setFormData] = useState({
-  //   fname: "",
-  //   lname: "",
-  // });
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    fname: "",
+    lname: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // setFormData({ fname: "", lname: "" });
-    dispatch({ type: "ADD_USER", payload: formData });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // setFormData({ fname: "", lname: "" });
+  //   dispatch({ type: "ADD_USER", payload: formData });
+  // };
 
   return (
     <>
