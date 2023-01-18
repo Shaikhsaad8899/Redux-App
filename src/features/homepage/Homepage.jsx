@@ -11,11 +11,11 @@ const Homepage = () => {
     lname: "",
   });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // setFormData({ fname: "", lname: "" });
-  //   dispatch({ type: "ADD_USER", payload: formData });
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // setFormData({ fname: "", lname: "" });
+    dispatch({ type: "ADD_USER", payload: formData });
+  };
 
   return (
     <>
